@@ -1,0 +1,6 @@
+{
+  "arch": "esp32",
+  "platform": "esp32",
+  "app_name": "example-shadow-js-master",
+  "build_time_ms": 49931
+}
