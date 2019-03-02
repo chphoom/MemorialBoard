@@ -11,27 +11,7 @@
 /* NOTE: signatures are fake */
 double  ceil(double);
 double  cos(double);
-int  esp32_touch_pad_get_cnt_mode_opt(int);
-int  esp32_touch_pad_get_cnt_mode_slope(int);
-int  esp32_touch_pad_get_filter_period();
-int  esp32_touch_pad_get_fsm_mode();
-int  esp32_touch_pad_get_group_mask_en();
-int  esp32_touch_pad_get_group_mask_set1();
-int  esp32_touch_pad_get_group_mask_set2();
-int  esp32_touch_pad_get_meas_time_meas_cycle();
-int  esp32_touch_pad_get_meas_time_sleep_cycle();
-int  esp32_touch_pad_get_thresh(int);
-int  esp32_touch_pad_get_trigger_mode();
-int  esp32_touch_pad_get_trigger_source();
-int  esp32_touch_pad_get_voltage_atten();
-int  esp32_touch_pad_get_voltage_refh();
-int  esp32_touch_pad_get_voltage_refl();
-int  esp32_touch_pad_isr_register(void (*)(int, void *), void *);
-int  esp32_touch_pad_isr_register();
-int  esp32_touch_pad_read(int);
-int  esp32_touch_pad_read_filtered(int);
-void  esp32_uart_config_set_fifo(int, void *, int, int, int, int);
-void  esp32_uart_config_set_pins(int, void *, int, int, int, int);
+void  esp_uart_config_set_params(void *, int, int, int, int, bool);
 double  exp(double);
 double  fabs(double);
 void  fclose(void *);
@@ -43,7 +23,6 @@ int  fread(char *, int, int, void *);
 void  free(void *);
 void  free(void *);
 int  fwrite(char *, int, int, void *);
-int  hall_sens_read(void);
 double  log(double);
 void * malloc(int);
 void  mbuf_remove(void *, int);
@@ -65,28 +44,6 @@ bool  mgos_azure_is_connected();
 bool  mgos_azure_send_d2c_msgp(struct mg_str *, struct mg_str *);
 void * mgos_bind(char *, void (*)(void *, int, void *, void *), void *);
 void  mgos_bitbang_write_bits_js(int, int, int, void *, int);
-void * mgos_bt_gap_get_srdd(void);
-char * mgos_bt_gap_parse_name_js(struct mg_str *);
-bool  mgos_bt_gap_scan_js(int, bool);
-void * mgos_bt_gatt_js_get_conn_def(void);
-void * mgos_bt_gatt_js_get_conn_def(void);
-bool  mgos_bt_gattc_connect_js(char *);
-bool  mgos_bt_gattc_disconnect(int);
-bool  mgos_bt_gattc_discover(int);
-void * mgos_bt_gattc_js_get_discovery_result_arg_def(void);
-void * mgos_bt_gattc_js_get_notify_arg_def(void);
-void * mgos_bt_gattc_js_get_read_result_def(void);
-bool  mgos_bt_gattc_read(int, int);
-bool  mgos_bt_gattc_subscribe(int, int);
-bool  mgos_bt_gattc_write_js(int, int, struct mg_str *);
-void * mgos_bt_gatts_js_add_char(void *, char *, int);
-void  mgos_bt_gatts_js_free_chars(void *);
-void * mgos_bt_gatts_js_get_notify_mode_arg_def(void);
-void * mgos_bt_gatts_js_get_read_arg_def(void);
-void * mgos_bt_gatts_js_get_write_arg_def(void);
-void  mgos_bt_gatts_notify_js(void *, int, int, struct mg_str *);
-bool  mgos_bt_gatts_register_service(char *, int, void *, int (*)(void *, int, void *, void *), void *);
-void  mgos_bt_gatts_send_resp_data_js(void *, void *, struct mg_str *);
 void  mgos_clear_timer(int);
 void * mgos_conf_find_schema_entry(char *, void *);
 double  mgos_conf_value_double(void *, void *);
@@ -108,7 +65,6 @@ void * mgos_dht_create(int, int);
 float  mgos_dht_get_humidity(void *);
 float  mgos_dht_get_temp(void *);
 void  mgos_disconnect(void *);
-void  mgos_esp_deep_sleep_d(double);
 bool  mgos_event_add_group_handler(int, void(*)(int, void *, void *), void *);
 bool  mgos_event_add_handler(int, void(*)(int, void *, void *), void *);
 bool  mgos_event_register_base(int, char *);
@@ -176,6 +132,7 @@ bool  mgos_spi_run_txn(void *, bool, void *);
 void  mgos_spi_set_fd_txn(void *, int, void *, void *);
 void  mgos_spi_set_hd_txn(void *, int, void *, int, int, void *);
 int  mgos_strftime(char *, int, char *, int);
+int  mgos_system_deep_sleep_d(double);
 void  mgos_system_restart_after(int);
 void * mgos_uart_config_get_default(int);
 void  mgos_uart_config_set_basic_params(void *, int, int, int, int);
@@ -211,53 +168,11 @@ double  round(double);
 double  sin(double);
 double  sqrt(double);
 void * strdup(char *);
-int  temprature_sens_read(void);
-int  touch_pad_clear_status();
-int  touch_pad_config(int, int);
-int  touch_pad_deinit();
-int  touch_pad_filter_delete();
-int  touch_pad_filter_start(int);
-int  touch_pad_filter_stop();
-int  touch_pad_get_status();
-int  touch_pad_init();
-int  touch_pad_intr_disable();
-int  touch_pad_intr_enable();
-int  touch_pad_io_init(int);
-int  touch_pad_set_cnt_mode(int, int, int);
-int  touch_pad_set_filter_period(int);
-int  touch_pad_set_fsm_mode(int);
-int  touch_pad_set_group_mask(int, int, int);
-int  touch_pad_set_meas_time(int, int);
-int  touch_pad_set_thresh(int, int);
-int  touch_pad_set_trigger_mode(int);
-int  touch_pad_set_trigger_source(int);
-int  touch_pad_set_voltage(int, int, int);
-int  touch_pad_sw_start();
 
 const struct mgos_ffi_export ffi_exports[] = {
   {"ceil", ceil},
   {"cos", cos},
-  {"esp32_touch_pad_get_cnt_mode_opt", esp32_touch_pad_get_cnt_mode_opt},
-  {"esp32_touch_pad_get_cnt_mode_slope", esp32_touch_pad_get_cnt_mode_slope},
-  {"esp32_touch_pad_get_filter_period", esp32_touch_pad_get_filter_period},
-  {"esp32_touch_pad_get_fsm_mode", esp32_touch_pad_get_fsm_mode},
-  {"esp32_touch_pad_get_group_mask_en", esp32_touch_pad_get_group_mask_en},
-  {"esp32_touch_pad_get_group_mask_set1", esp32_touch_pad_get_group_mask_set1},
-  {"esp32_touch_pad_get_group_mask_set2", esp32_touch_pad_get_group_mask_set2},
-  {"esp32_touch_pad_get_meas_time_meas_cycle", esp32_touch_pad_get_meas_time_meas_cycle},
-  {"esp32_touch_pad_get_meas_time_sleep_cycle", esp32_touch_pad_get_meas_time_sleep_cycle},
-  {"esp32_touch_pad_get_thresh", esp32_touch_pad_get_thresh},
-  {"esp32_touch_pad_get_trigger_mode", esp32_touch_pad_get_trigger_mode},
-  {"esp32_touch_pad_get_trigger_source", esp32_touch_pad_get_trigger_source},
-  {"esp32_touch_pad_get_voltage_atten", esp32_touch_pad_get_voltage_atten},
-  {"esp32_touch_pad_get_voltage_refh", esp32_touch_pad_get_voltage_refh},
-  {"esp32_touch_pad_get_voltage_refl", esp32_touch_pad_get_voltage_refl},
-  {"esp32_touch_pad_isr_register", esp32_touch_pad_isr_register},
-  {"esp32_touch_pad_isr_register", esp32_touch_pad_isr_register},
-  {"esp32_touch_pad_read", esp32_touch_pad_read},
-  {"esp32_touch_pad_read_filtered", esp32_touch_pad_read_filtered},
-  {"esp32_uart_config_set_fifo", esp32_uart_config_set_fifo},
-  {"esp32_uart_config_set_pins", esp32_uart_config_set_pins},
+  {"esp_uart_config_set_params", esp_uart_config_set_params},
   {"exp", exp},
   {"fabs", fabs},
   {"fclose", fclose},
@@ -269,7 +184,6 @@ const struct mgos_ffi_export ffi_exports[] = {
   {"free", free},
   {"free", free},
   {"fwrite", fwrite},
-  {"hall_sens_read", hall_sens_read},
   {"log", log},
   {"malloc", malloc},
   {"mbuf_remove", mbuf_remove},
@@ -291,28 +205,6 @@ const struct mgos_ffi_export ffi_exports[] = {
   {"mgos_azure_send_d2c_msgp", mgos_azure_send_d2c_msgp},
   {"mgos_bind", mgos_bind},
   {"mgos_bitbang_write_bits_js", mgos_bitbang_write_bits_js},
-  {"mgos_bt_gap_get_srdd", mgos_bt_gap_get_srdd},
-  {"mgos_bt_gap_parse_name_js", mgos_bt_gap_parse_name_js},
-  {"mgos_bt_gap_scan_js", mgos_bt_gap_scan_js},
-  {"mgos_bt_gatt_js_get_conn_def", mgos_bt_gatt_js_get_conn_def},
-  {"mgos_bt_gatt_js_get_conn_def", mgos_bt_gatt_js_get_conn_def},
-  {"mgos_bt_gattc_connect_js", mgos_bt_gattc_connect_js},
-  {"mgos_bt_gattc_disconnect", mgos_bt_gattc_disconnect},
-  {"mgos_bt_gattc_discover", mgos_bt_gattc_discover},
-  {"mgos_bt_gattc_js_get_discovery_result_arg_def", mgos_bt_gattc_js_get_discovery_result_arg_def},
-  {"mgos_bt_gattc_js_get_notify_arg_def", mgos_bt_gattc_js_get_notify_arg_def},
-  {"mgos_bt_gattc_js_get_read_result_def", mgos_bt_gattc_js_get_read_result_def},
-  {"mgos_bt_gattc_read", mgos_bt_gattc_read},
-  {"mgos_bt_gattc_subscribe", mgos_bt_gattc_subscribe},
-  {"mgos_bt_gattc_write_js", mgos_bt_gattc_write_js},
-  {"mgos_bt_gatts_js_add_char", mgos_bt_gatts_js_add_char},
-  {"mgos_bt_gatts_js_free_chars", mgos_bt_gatts_js_free_chars},
-  {"mgos_bt_gatts_js_get_notify_mode_arg_def", mgos_bt_gatts_js_get_notify_mode_arg_def},
-  {"mgos_bt_gatts_js_get_read_arg_def", mgos_bt_gatts_js_get_read_arg_def},
-  {"mgos_bt_gatts_js_get_write_arg_def", mgos_bt_gatts_js_get_write_arg_def},
-  {"mgos_bt_gatts_notify_js", mgos_bt_gatts_notify_js},
-  {"mgos_bt_gatts_register_service", mgos_bt_gatts_register_service},
-  {"mgos_bt_gatts_send_resp_data_js", mgos_bt_gatts_send_resp_data_js},
   {"mgos_clear_timer", mgos_clear_timer},
   {"mgos_conf_find_schema_entry", mgos_conf_find_schema_entry},
   {"mgos_conf_value_double", mgos_conf_value_double},
@@ -334,7 +226,6 @@ const struct mgos_ffi_export ffi_exports[] = {
   {"mgos_dht_get_humidity", mgos_dht_get_humidity},
   {"mgos_dht_get_temp", mgos_dht_get_temp},
   {"mgos_disconnect", mgos_disconnect},
-  {"mgos_esp_deep_sleep_d", mgos_esp_deep_sleep_d},
   {"mgos_event_add_group_handler", mgos_event_add_group_handler},
   {"mgos_event_add_handler", mgos_event_add_handler},
   {"mgos_event_register_base", mgos_event_register_base},
@@ -402,6 +293,7 @@ const struct mgos_ffi_export ffi_exports[] = {
   {"mgos_spi_set_fd_txn", mgos_spi_set_fd_txn},
   {"mgos_spi_set_hd_txn", mgos_spi_set_hd_txn},
   {"mgos_strftime", mgos_strftime},
+  {"mgos_system_deep_sleep_d", mgos_system_deep_sleep_d},
   {"mgos_system_restart_after", mgos_system_restart_after},
   {"mgos_uart_config_get_default", mgos_uart_config_get_default},
   {"mgos_uart_config_set_basic_params", mgos_uart_config_set_basic_params},
@@ -437,27 +329,5 @@ const struct mgos_ffi_export ffi_exports[] = {
   {"sin", sin},
   {"sqrt", sqrt},
   {"strdup", strdup},
-  {"temprature_sens_read", temprature_sens_read},
-  {"touch_pad_clear_status", touch_pad_clear_status},
-  {"touch_pad_config", touch_pad_config},
-  {"touch_pad_deinit", touch_pad_deinit},
-  {"touch_pad_filter_delete", touch_pad_filter_delete},
-  {"touch_pad_filter_start", touch_pad_filter_start},
-  {"touch_pad_filter_stop", touch_pad_filter_stop},
-  {"touch_pad_get_status", touch_pad_get_status},
-  {"touch_pad_init", touch_pad_init},
-  {"touch_pad_intr_disable", touch_pad_intr_disable},
-  {"touch_pad_intr_enable", touch_pad_intr_enable},
-  {"touch_pad_io_init", touch_pad_io_init},
-  {"touch_pad_set_cnt_mode", touch_pad_set_cnt_mode},
-  {"touch_pad_set_filter_period", touch_pad_set_filter_period},
-  {"touch_pad_set_fsm_mode", touch_pad_set_fsm_mode},
-  {"touch_pad_set_group_mask", touch_pad_set_group_mask},
-  {"touch_pad_set_meas_time", touch_pad_set_meas_time},
-  {"touch_pad_set_thresh", touch_pad_set_thresh},
-  {"touch_pad_set_trigger_mode", touch_pad_set_trigger_mode},
-  {"touch_pad_set_trigger_source", touch_pad_set_trigger_source},
-  {"touch_pad_set_voltage", touch_pad_set_voltage},
-  {"touch_pad_sw_start", touch_pad_sw_start},
 };
-const int ffi_exports_cnt = 224;
+const int ffi_exports_cnt = 159;

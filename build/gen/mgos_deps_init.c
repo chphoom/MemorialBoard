@@ -11,8 +11,8 @@
 extern bool mgos_mongoose_init(void);
 extern bool mgos_ota_common_init(void);
 extern bool mgos_vfs_common_init(void);
+extern bool mgos_vfs_dev_part_init(void);
 extern bool mgos_vfs_dev_spi_flash_init(void);
-extern bool mgos_vfs_fs_lfs_init(void);
 extern bool mgos_vfs_fs_spiffs_init(void);
 extern bool mgos_core_init(void);
 extern bool mgos_adc_init(void);
@@ -23,12 +23,8 @@ extern bool mgos_shadow_init(void);
 extern bool mgos_aws_init(void);
 extern bool mgos_sntp_init(void);
 extern bool mgos_azure_init(void);
-extern bool mgos_bt_common_init(void);
-extern bool mgos_bt_service_config_init(void);
-extern bool mgos_bt_service_debug_init(void);
 extern bool mgos_ota_http_client_init(void);
 extern bool mgos_ota_shadow_init(void);
-extern bool mgos_ethernet_init(void);
 extern bool mgos_wifi_init(void);
 extern bool mgos_http_server_init(void);
 extern bool mgos_rpc_common_init(void);
@@ -36,15 +32,12 @@ extern bool mgos_rpc_ws_init(void);
 extern bool mgos_dash_init(void);
 extern bool mgos_dht_init(void);
 extern bool mgos_dns_sd_init(void);
-extern bool mgos_esp32_touchpad_init(void);
 extern bool mgos_gcp_init(void);
 extern bool mgos_neopixel_init(void);
 extern bool mgos_ota_http_server_init(void);
-extern bool mgos_pppos_init(void);
 extern bool mgos_provision_init(void);
 extern bool mgos_pwm_init(void);
 extern bool mgos_rpc_azure_init(void);
-extern bool mgos_rpc_gatts_init(void);
 extern bool mgos_rpc_gcp_init(void);
 extern bool mgos_rpc_loopback_init(void);
 extern bool mgos_watson_init(void);
@@ -77,16 +70,16 @@ static const struct lib_descr {
     // "vfs-common". deps: [ ]
     {.title = "vfs-common", .init = mgos_vfs_common_init},
 
+    // "vfs-dev-part". deps: [ "vfs-common" ]
+    {.title = "vfs-dev-part", .init = mgos_vfs_dev_part_init},
+
     // "vfs-dev-spi-flash". deps: [ "vfs-common" ]
     {.title = "vfs-dev-spi-flash", .init = mgos_vfs_dev_spi_flash_init},
-
-    // "vfs-fs-lfs". deps: [ "vfs-common" ]
-    {.title = "vfs-fs-lfs", .init = mgos_vfs_fs_lfs_init},
 
     // "vfs-fs-spiffs". deps: [ "vfs-common" ]
     {.title = "vfs-fs-spiffs", .init = mgos_vfs_fs_spiffs_init},
 
-    // "core". deps: [ "mongoose" "ota-common" "vfs-common" "vfs-dev-spi-flash" "vfs-fs-lfs" "vfs-fs-spiffs" ]
+    // "core". deps: [ "mongoose" "ota-common" "vfs-common" "vfs-dev-part" "vfs-dev-spi-flash" "vfs-fs-spiffs" ]
     {.title = "core", .init = mgos_core_init},
 
     // "adc". deps: [ "core" ]
@@ -113,31 +106,19 @@ static const struct lib_descr {
     // "azure". deps: [ "ca-bundle" "core" "mqtt" "shadow" "sntp" ]
     {.title = "azure", .init = mgos_azure_init},
 
-    // "bt-common". deps: [ "core" ]
-    {.title = "bt-common", .init = mgos_bt_common_init},
-
-    // "bt-service-config". deps: [ "bt-common" "core" ]
-    {.title = "bt-service-config", .init = mgos_bt_service_config_init},
-
-    // "bt-service-debug". deps: [ "bt-common" "core" ]
-    {.title = "bt-service-debug", .init = mgos_bt_service_debug_init},
-
     // "ota-http-client". deps: [ "core" "ota-common" ]
     {.title = "ota-http-client", .init = mgos_ota_http_client_init},
 
     // "ota-shadow". deps: [ "core" "ota-common" "ota-http-client" "shadow" ]
     {.title = "ota-shadow", .init = mgos_ota_shadow_init},
 
-    // "ethernet". deps: [ "core" ]
-    {.title = "ethernet", .init = mgos_ethernet_init},
-
     // "wifi". deps: [ "core" ]
     {.title = "wifi", .init = mgos_wifi_init},
 
-    // "http-server". deps: [ "atca" "core" "ethernet" "wifi" ]
+    // "http-server". deps: [ "atca" "core" "wifi" ]
     {.title = "http-server", .init = mgos_http_server_init},
 
-    // "rpc-common". deps: [ "core" "mongoose" ]
+    // "rpc-common". deps: [ "core" "http-server" "mongoose" ]
     {.title = "rpc-common", .init = mgos_rpc_common_init},
 
     // "rpc-ws". deps: [ "core" "http-server" "rpc-common" ]
@@ -149,11 +130,8 @@ static const struct lib_descr {
     // "dht". deps: [ "core" ]
     {.title = "dht", .init = mgos_dht_init},
 
-    // "dns-sd". deps: [ "core" "ethernet" "http-server" "wifi" ]
+    // "dns-sd". deps: [ "core" "http-server" "wifi" ]
     {.title = "dns-sd", .init = mgos_dns_sd_init},
-
-    // "esp32-touchpad". deps: [ "core" ]
-    {.title = "esp32-touchpad", .init = mgos_esp32_touchpad_init},
 
     // "gcp". deps: [ "ca-bundle" "core" "mqtt" "sntp" ]
     {.title = "gcp", .init = mgos_gcp_init},
@@ -164,9 +142,6 @@ static const struct lib_descr {
     // "ota-http-server". deps: [ "core" "http-server" "ota-common" "ota-http-client" ]
     {.title = "ota-http-server", .init = mgos_ota_http_server_init},
 
-    // "pppos". deps: [ "core" ]
-    {.title = "pppos", .init = mgos_pppos_init},
-
     // "provision". deps: [ "core" ]
     {.title = "provision", .init = mgos_provision_init},
 
@@ -175,9 +150,6 @@ static const struct lib_descr {
 
     // "rpc-azure". deps: [ "azure" "core" "rpc-common" ]
     {.title = "rpc-azure", .init = mgos_rpc_azure_init},
-
-    // "rpc-gatts". deps: [ "bt-common" "core" "rpc-common" ]
-    {.title = "rpc-gatts", .init = mgos_rpc_gatts_init},
 
     // "rpc-gcp". deps: [ "core" "gcp" "rpc-common" ]
     {.title = "rpc-gcp", .init = mgos_rpc_gcp_init},
@@ -218,7 +190,7 @@ static const struct lib_descr {
     // "spi". deps: [ "core" ]
     {.title = "spi", .init = mgos_spi_init},
 
-    // "demo-bundle". deps: [ "adc" "atca" "aws" "azure" "bt-service-config" "bt-service-debug" "ca-bundle" "core" "dash" "dht" "dns-sd" "esp32-touchpad" "ethernet" "gcp" "http-server" "i2c" "neopixel" "ota-http-client" "ota-http-server" "ota-shadow" "pppos" "provision" "pwm" "rpc-azure" "rpc-gatts" "rpc-gcp" "rpc-loopback" "rpc-mqtt" "rpc-service-atca" "rpc-service-config" "rpc-service-fs" "rpc-service-gpio" "rpc-service-i2c" "rpc-service-ota" "rpc-service-wifi" "rpc-uart" "rpc-ws" "shadow" "sntp" "spi" "vfs-dev-spi-flash" "watson" "wifi" ]
+    // "demo-bundle". deps: [ "adc" "atca" "aws" "azure" "ca-bundle" "core" "dash" "dht" "dns-sd" "gcp" "http-server" "i2c" "neopixel" "ota-http-client" "ota-http-server" "ota-shadow" "provision" "pwm" "rpc-azure" "rpc-gcp" "rpc-loopback" "rpc-mqtt" "rpc-service-atca" "rpc-service-config" "rpc-service-fs" "rpc-service-gpio" "rpc-service-i2c" "rpc-service-ota" "rpc-service-wifi" "rpc-uart" "rpc-ws" "shadow" "sntp" "spi" "vfs-dev-spi-flash" "watson" "wifi" ]
     {.title = "demo-bundle", .init = mgos_demo_bundle_init},
 
     // "mjs". deps: [ "core" ]

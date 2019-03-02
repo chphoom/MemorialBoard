@@ -1,18 +1,6 @@
-- - sys.esp32_adc_vref
-  - i
-  - 0
-  - title: ADC Vref, in mV
-- - sys.esp32_adc_width
-  - i
-  - 3
-  - title: ADC width, see ESP32 IDF
 - - i2c
   - o
   - title: I2C settings
-- - i2c.unit_no
-  - i
-  - 0
-  - title: Which hardware unit to use, 0 or 1
 - - i2c.enable
   - b
   - false
@@ -27,17 +15,12 @@
   - title: Debug I2C bus activity
 - - i2c.sda_gpio
   - i
-  - 32
+  - 12
   - title: GPIO to use for SDA
 - - i2c.scl_gpio
   - i
-  - 33
+  - 14
   - title: GPIO to use for SCL
-- - i2c1
-  - i2c
-  - title: I2C settings
-- - i2c1.unit_no
-  - 1
 - - sys.atca
   - o
   - title: CryptoAuthLib configuration
@@ -192,8 +175,6 @@
   - i
   - 60
   - title: Maximum reconnect timeout
-- - mqtt.recv_mbuf_limit
-  - 8192
 - - sntp
   - o
   - title: SNTP settings
@@ -256,73 +237,6 @@
   - b
   - true
   - title: Subscribe to the direct method invocation topic
-- - bt
-  - o
-  - title: Bluetooth settings
-- - bt.enable
-  - b
-  - true
-  - title: Enable BT
-- - bt.dev_name
-  - s
-  - ""
-  - title: Device name; defaults to device.id
-- - bt.adv_enable
-  - b
-  - true
-  - title: Advertise services
-- - bt.scan_rsp_data_hex
-  - s
-  - ""
-  - title: Scan response data, hex-encoded
-- - bt.keep_enabled
-  - b
-  - false
-  - title: By default, BT will be disabled once WiFi is configured and connects. Set
-      this to true to keep BT enabled.
-- - bt.allow_pairing
-  - b
-  - true
-  - title: Allow pairing/bonding with other devices
-- - bt.max_paired_devices
-  - i
-  - -1
-  - title: Max number of paired devices; -1 - no limit
-- - bt.random_address
-  - b
-  - true
-  - title: Use random BT address
-- - bt.gatt_mtu
-  - i
-  - 500
-  - title: Local MTU setting, used when negotiating with clients
-- - bt.gatts
-  - o
-  - title: GATTS settings
-- - bt.gatts.min_sec_level
-  - i
-  - 0
-  - title: 0 - no auth required, 1 - encryption reqd, 2 - encryption + MITM reqd
-- - bt.gatts.require_pairing
-  - b
-  - false
-  - title: Require device to be paired before accessing services
-- - bt.config_svc_enable
-  - b
-  - true
-  - title: Enable the config service
-- - bt.config_svc_sec_level
-  - i
-  - 0
-  - title: Minimum required security level
-- - bt.debug_svc_enable
-  - b
-  - true
-  - title: Enable the debug service
-- - bt.debug_svc_sec_level
-  - i
-  - 0
-  - title: Minimum required security level
 - - update
   - o
   - title: Firmware updater
@@ -493,44 +407,7 @@
   - 120
   - title: Time-to-live in seconds
 - - dns_sd.host_name
-  - mOS-esp32-??????
-- - eth
-  - o
-  - title: Ethernet settings
-- - eth.enable
-  - b
-  - false
-  - title: Enable Ethernet interface
-- - eth.phy_addr
-  - i
-  - 0
-  - title: (R)MII PHY address
-- - eth.ip
-  - s
-  - title: Static IP Address
-- - eth.netmask
-  - s
-  - title: Static Netmask
-- - eth.gw
-  - s
-  - title: Static Default Gateway
-- - eth.clk_mode
-  - i
-  - 0
-  - title: '50 MHz clock source: 0 in <- GPIO0, 1 out -> GPIO0, 2 out -> GPIO16, 3
-      out -> GPIO17 (inverted)'
-- - eth.mdc_gpio
-  - i
-  - 23
-  - title: GPIO to use for RMII MDC signal
-- - eth.mdio_gpio
-  - i
-  - 18
-  - title: GPIO to use for RMII MDIO signal
-- - eth.phy_pwr_gpio
-  - i
-  - -1
-  - title: GPIO to use for PHY PWR control signal
+  - mOS-esp8266-??????
 - - gcp
   - o
   - title: GCP IOT settings
@@ -578,70 +455,6 @@
   - b
   - true
   - title: Enable POST updates
-- - pppos.enable
-  - b
-  - false
-  - title: Enable PPPoS
-- - pppos.uart_no
-  - i
-  - 1
-  - title: Which UART to use
-- - pppos.baud_rate
-  - i
-  - 115200
-  - title: Baud rate to use for data transfer
-- - pppos.start_baud_rate
-  - i
-  - 115200
-  - title: Starting baud rate, used for initial configuration
-- - pppos.fc_enable
-  - b
-  - false
-  - title: Enable hardware CTS/RTS flow control
-- - pppos.rx_gpio
-  - i
-  - -1
-  - title: RX pin; -1 = use default
-- - pppos.tx_gpio
-  - i
-  - -1
-  - title: TX pin; -1 = use default
-- - pppos.cts_gpio
-  - i
-  - -1
-  - title: CTS pin; -1 = use default
-- - pppos.rts_gpio
-  - i
-  - -1
-  - title: RTS pin; -1 = use default
-- - pppos.apn
-  - s
-  - ""
-  - title: APN name
-- - pppos.user
-  - s
-  - ""
-  - title: User name
-- - pppos.pass
-  - s
-  - ""
-  - title: Password
-- - pppos.connect_on_startup
-  - b
-  - true
-  - title: Connect immediately on startup
-- - pppos.echo_interval
-  - i
-  - 10
-  - title: LCP Echo interval, seconds
-- - pppos.echo_fails
-  - i
-  - 3
-  - title: Number of failed echos before connection is declared dead and retried
-- - pppos.hexdump_enable
-  - b
-  - false
-  - title: Dump all the data sent over UART to stderr
 - - provision
   - o
   - title: Provision library settings
@@ -689,21 +502,6 @@
   - b
   - true
   - title: Enable RPC over Azure Direct Method calls
-- - rpc.gatts
-  - o
-  - title: Bluetooth settings
-- - rpc.gatts.enable
-  - b
-  - true
-  - title: Enable RPC GATTS service
-- - rpc.gatts.sec_level
-  - i
-  - 0
-  - title: Minimum required security level
-- - rpc.gatts.max_frame_size
-  - i
-  - 4096
-  - title: Maximum allowed frame size
 - - rpc.gcp
   - o
   - title: RPC over GCP settings
@@ -849,9 +647,13 @@
 - - wifi.sta1
   - wifi.sta
   - title: WiFi Station Config 1
+- - wifi.sta1.enable
+  - false
 - - wifi.sta2
   - wifi.sta
   - title: WiFi Station Config 2
+- - wifi.sta2.enable
+  - false
 - - wifi.sta_cfg_idx
   - i
   - 0
@@ -894,25 +696,21 @@
   - b
   - false
   - title: Debug SPI bus activity
-- - spi.unit_no
-  - i
-  - 3
-  - title: Which SPI unit to use, 2 or 3
 - - spi.miso_gpio
   - i
-  - 19
+  - -1
   - title: GPIO to use for MISO
 - - spi.mosi_gpio
   - i
-  - 23
+  - -1
   - title: GPIO to use for MOSI
 - - spi.sclk_gpio
   - i
-  - 18
+  - -1
   - title: GPIO to use for SCLK
 - - spi.cs0_gpio
   - i
-  - 5
+  - -1
   - title: GPIO to use for CS0
 - - spi.cs1_gpio
   - i
@@ -922,6 +720,14 @@
   - i
   - -1
   - title: GPIO to use for CS2
+- - spi.miso_gpio
+  - 12
+- - spi.mosi_gpio
+  - 13
+- - spi.sclk_gpio
+  - 14
+- - spi.cs0_gpio
+  - 15
 - - watson
   - o
   - title: IBM Watson IoT Platform settings
@@ -1012,7 +818,9 @@
   - false
   - title: True if button is pulled up when inactive
 - - board.led1.pin
-  - 13
+  - 2
+- - board.led1.active_high
+  - false
 - - board.btn1.pin
   - 0
 - - board.btn1.pull_up
@@ -1021,3 +829,7 @@
   - 0
 - - provision.btn.pull_up
   - true
+- - provision.led.pin
+  - 2
+- - provision.led.active_high
+  - false

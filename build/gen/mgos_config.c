@@ -1,18 +1,18 @@
 /* clang-format off */
 /*
  * Generated file - do not edit.
- * Command: /mongoose-os/fw/tools/gen_sys_config.py --c_name=mgos_config --c_global_name=mgos_sys_config --dest_dir=/fwbuild-volumes/2.11.0/apps/example-shadow-js-master/esp32/build_contexts/build_ctx_562726847/build/gen/ /mongoose-os/fw/src/mgos_debug_udp_config.yaml /mongoose-os/fw/src/mgos_sys_config.yaml /mongoose-os/fw/platforms/esp32/src/esp32_sys_config.yaml /fwbuild-volumes/2.11.0/apps/example-shadow-js-master/esp32/build_contexts/build_ctx_562726847/build/gen/mos_conf_schema.yml
+ * Command: /mongoose-os/fw/tools/gen_sys_config.py --c_name=mgos_config --c_global_name=mgos_sys_config --dest_dir=/fwbuild-volumes/2.12.1/apps/example-shadow-js-master/esp8266/build_contexts/build_ctx_786720970/build/gen/ /mongoose-os/fw/src/mgos_debug_udp_config.yaml /mongoose-os/fw/src/mgos_sys_config.yaml /mongoose-os/fw/platforms/esp8266/src/esp_sys_config.yaml /fwbuild-volumes/2.12.1/apps/example-shadow-js-master/esp8266/build_contexts/build_ctx_786720970/build/gen/mos_conf_schema.yml
  */
 
 #include <stddef.h>
 #include "mgos_config.h"
 
-const struct mgos_conf_entry mgos_config_schema_[352] = {
-  {.type = CONF_TYPE_OBJECT, .key = "", .offset = 0, .num_desc = 351},
+const struct mgos_conf_entry mgos_config_schema_[293] = {
+  {.type = CONF_TYPE_OBJECT, .key = "", .offset = 0, .num_desc = 292},
   {.type = CONF_TYPE_OBJECT, .key = "debug", .offset = offsetof(struct mgos_config, debug), .num_desc = 10},
   {.type = CONF_TYPE_STRING, .key = "udp_log_addr", .offset = offsetof(struct mgos_config, debug.udp_log_addr)},
   {.type = CONF_TYPE_INT, .key = "level", .offset = offsetof(struct mgos_config, debug.level)},
-  {.type = CONF_TYPE_STRING, .key = "filter", .offset = offsetof(struct mgos_config, debug.filter)},
+  {.type = CONF_TYPE_STRING, .key = "file_level", .offset = offsetof(struct mgos_config, debug.file_level)},
   {.type = CONF_TYPE_INT, .key = "stdout_uart", .offset = offsetof(struct mgos_config, debug.stdout_uart)},
   {.type = CONF_TYPE_INT, .key = "stderr_uart", .offset = offsetof(struct mgos_config, debug.stderr_uart)},
   {.type = CONF_TYPE_INT, .key = "factory_reset_gpio", .offset = offsetof(struct mgos_config, debug.factory_reset_gpio)},
@@ -23,7 +23,7 @@ const struct mgos_conf_entry mgos_config_schema_[352] = {
   {.type = CONF_TYPE_OBJECT, .key = "device", .offset = offsetof(struct mgos_config, device), .num_desc = 2},
   {.type = CONF_TYPE_STRING, .key = "id", .offset = offsetof(struct mgos_config, device.id)},
   {.type = CONF_TYPE_STRING, .key = "license", .offset = offsetof(struct mgos_config, device.license)},
-  {.type = CONF_TYPE_OBJECT, .key = "sys", .offset = offsetof(struct mgos_config, sys), .num_desc = 16},
+  {.type = CONF_TYPE_OBJECT, .key = "sys", .offset = offsetof(struct mgos_config, sys), .num_desc = 14},
   {.type = CONF_TYPE_OBJECT, .key = "mount", .offset = offsetof(struct mgos_config, sys.mount), .num_desc = 5},
   {.type = CONF_TYPE_STRING, .key = "path", .offset = offsetof(struct mgos_config, sys.mount.path)},
   {.type = CONF_TYPE_STRING, .key = "dev_type", .offset = offsetof(struct mgos_config, sys.mount.dev_type)},
@@ -33,28 +33,18 @@ const struct mgos_conf_entry mgos_config_schema_[352] = {
   {.type = CONF_TYPE_STRING, .key = "tz_spec", .offset = offsetof(struct mgos_config, sys.tz_spec)},
   {.type = CONF_TYPE_INT, .key = "wdt_timeout", .offset = offsetof(struct mgos_config, sys.wdt_timeout)},
   {.type = CONF_TYPE_STRING, .key = "pref_ota_lib", .offset = offsetof(struct mgos_config, sys.pref_ota_lib)},
-  {.type = CONF_TYPE_INT, .key = "esp32_adc_vref", .offset = offsetof(struct mgos_config, sys.esp32_adc_vref)},
-  {.type = CONF_TYPE_INT, .key = "esp32_adc_width", .offset = offsetof(struct mgos_config, sys.esp32_adc_width)},
   {.type = CONF_TYPE_OBJECT, .key = "atca", .offset = offsetof(struct mgos_config, sys.atca), .num_desc = 4},
   {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, sys.atca.enable)},
   {.type = CONF_TYPE_INT, .key = "i2c_bus", .offset = offsetof(struct mgos_config, sys.atca.i2c_bus)},
   {.type = CONF_TYPE_INT, .key = "i2c_addr", .offset = offsetof(struct mgos_config, sys.atca.i2c_addr)},
   {.type = CONF_TYPE_INT, .key = "ecdh_slots_mask", .offset = offsetof(struct mgos_config, sys.atca.ecdh_slots_mask)},
   {.type = CONF_TYPE_STRING, .key = "conf_acl", .offset = offsetof(struct mgos_config, conf_acl)},
-  {.type = CONF_TYPE_OBJECT, .key = "i2c", .offset = offsetof(struct mgos_config, i2c), .num_desc = 6},
-  {.type = CONF_TYPE_INT, .key = "unit_no", .offset = offsetof(struct mgos_config, i2c.unit_no)},
+  {.type = CONF_TYPE_OBJECT, .key = "i2c", .offset = offsetof(struct mgos_config, i2c), .num_desc = 5},
   {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, i2c.enable)},
   {.type = CONF_TYPE_INT, .key = "freq", .offset = offsetof(struct mgos_config, i2c.freq)},
   {.type = CONF_TYPE_BOOL, .key = "debug", .offset = offsetof(struct mgos_config, i2c.debug)},
   {.type = CONF_TYPE_INT, .key = "sda_gpio", .offset = offsetof(struct mgos_config, i2c.sda_gpio)},
   {.type = CONF_TYPE_INT, .key = "scl_gpio", .offset = offsetof(struct mgos_config, i2c.scl_gpio)},
-  {.type = CONF_TYPE_OBJECT, .key = "i2c1", .offset = offsetof(struct mgos_config, i2c1), .num_desc = 6},
-  {.type = CONF_TYPE_INT, .key = "unit_no", .offset = offsetof(struct mgos_config, i2c1.unit_no)},
-  {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, i2c1.enable)},
-  {.type = CONF_TYPE_INT, .key = "freq", .offset = offsetof(struct mgos_config, i2c1.freq)},
-  {.type = CONF_TYPE_BOOL, .key = "debug", .offset = offsetof(struct mgos_config, i2c1.debug)},
-  {.type = CONF_TYPE_INT, .key = "sda_gpio", .offset = offsetof(struct mgos_config, i2c1.sda_gpio)},
-  {.type = CONF_TYPE_INT, .key = "scl_gpio", .offset = offsetof(struct mgos_config, i2c1.scl_gpio)},
   {.type = CONF_TYPE_OBJECT, .key = "mqtt", .offset = offsetof(struct mgos_config, mqtt), .num_desc = 21},
   {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, mqtt.enable)},
   {.type = CONF_TYPE_STRING, .key = "server", .offset = offsetof(struct mgos_config, mqtt.server)},
@@ -126,23 +116,6 @@ const struct mgos_conf_entry mgos_config_schema_[352] = {
   {.type = CONF_TYPE_STRING, .key = "key", .offset = offsetof(struct mgos_config, azure.key)},
   {.type = CONF_TYPE_BOOL, .key = "enable_cm", .offset = offsetof(struct mgos_config, azure.enable_cm)},
   {.type = CONF_TYPE_BOOL, .key = "enable_dm", .offset = offsetof(struct mgos_config, azure.enable_dm)},
-  {.type = CONF_TYPE_OBJECT, .key = "bt", .offset = offsetof(struct mgos_config, bt), .num_desc = 16},
-  {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, bt.enable)},
-  {.type = CONF_TYPE_STRING, .key = "dev_name", .offset = offsetof(struct mgos_config, bt.dev_name)},
-  {.type = CONF_TYPE_BOOL, .key = "adv_enable", .offset = offsetof(struct mgos_config, bt.adv_enable)},
-  {.type = CONF_TYPE_STRING, .key = "scan_rsp_data_hex", .offset = offsetof(struct mgos_config, bt.scan_rsp_data_hex)},
-  {.type = CONF_TYPE_BOOL, .key = "keep_enabled", .offset = offsetof(struct mgos_config, bt.keep_enabled)},
-  {.type = CONF_TYPE_BOOL, .key = "allow_pairing", .offset = offsetof(struct mgos_config, bt.allow_pairing)},
-  {.type = CONF_TYPE_INT, .key = "max_paired_devices", .offset = offsetof(struct mgos_config, bt.max_paired_devices)},
-  {.type = CONF_TYPE_BOOL, .key = "random_address", .offset = offsetof(struct mgos_config, bt.random_address)},
-  {.type = CONF_TYPE_INT, .key = "gatt_mtu", .offset = offsetof(struct mgos_config, bt.gatt_mtu)},
-  {.type = CONF_TYPE_OBJECT, .key = "gatts", .offset = offsetof(struct mgos_config, bt.gatts), .num_desc = 2},
-  {.type = CONF_TYPE_INT, .key = "min_sec_level", .offset = offsetof(struct mgos_config, bt.gatts.min_sec_level)},
-  {.type = CONF_TYPE_BOOL, .key = "require_pairing", .offset = offsetof(struct mgos_config, bt.gatts.require_pairing)},
-  {.type = CONF_TYPE_BOOL, .key = "config_svc_enable", .offset = offsetof(struct mgos_config, bt.config_svc_enable)},
-  {.type = CONF_TYPE_INT, .key = "config_svc_sec_level", .offset = offsetof(struct mgos_config, bt.config_svc_sec_level)},
-  {.type = CONF_TYPE_BOOL, .key = "debug_svc_enable", .offset = offsetof(struct mgos_config, bt.debug_svc_enable)},
-  {.type = CONF_TYPE_INT, .key = "debug_svc_sec_level", .offset = offsetof(struct mgos_config, bt.debug_svc_sec_level)},
   {.type = CONF_TYPE_OBJECT, .key = "update", .offset = offsetof(struct mgos_config, update), .num_desc = 9},
   {.type = CONF_TYPE_INT, .key = "timeout", .offset = offsetof(struct mgos_config, update.timeout)},
   {.type = CONF_TYPE_INT, .key = "commit_timeout", .offset = offsetof(struct mgos_config, update.commit_timeout)},
@@ -153,7 +126,7 @@ const struct mgos_conf_entry mgos_config_schema_[352] = {
   {.type = CONF_TYPE_STRING, .key = "ssl_client_cert_file", .offset = offsetof(struct mgos_config, update.ssl_client_cert_file)},
   {.type = CONF_TYPE_STRING, .key = "ssl_server_name", .offset = offsetof(struct mgos_config, update.ssl_server_name)},
   {.type = CONF_TYPE_BOOL, .key = "enable_post", .offset = offsetof(struct mgos_config, update.enable_post)},
-  {.type = CONF_TYPE_OBJECT, .key = "rpc", .offset = offsetof(struct mgos_config, rpc), .num_desc = 35},
+  {.type = CONF_TYPE_OBJECT, .key = "rpc", .offset = offsetof(struct mgos_config, rpc), .num_desc = 31},
   {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, rpc.enable)},
   {.type = CONF_TYPE_INT, .key = "max_frame_size", .offset = offsetof(struct mgos_config, rpc.max_frame_size)},
   {.type = CONF_TYPE_INT, .key = "max_queue_length", .offset = offsetof(struct mgos_config, rpc.max_queue_length)},
@@ -171,10 +144,6 @@ const struct mgos_conf_entry mgos_config_schema_[352] = {
   {.type = CONF_TYPE_STRING, .key = "ssl_client_cert_file", .offset = offsetof(struct mgos_config, rpc.ws.ssl_client_cert_file)},
   {.type = CONF_TYPE_OBJECT, .key = "azure", .offset = offsetof(struct mgos_config, rpc.azure), .num_desc = 1},
   {.type = CONF_TYPE_BOOL, .key = "enable_dm", .offset = offsetof(struct mgos_config, rpc.azure.enable_dm)},
-  {.type = CONF_TYPE_OBJECT, .key = "gatts", .offset = offsetof(struct mgos_config, rpc.gatts), .num_desc = 3},
-  {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, rpc.gatts.enable)},
-  {.type = CONF_TYPE_INT, .key = "sec_level", .offset = offsetof(struct mgos_config, rpc.gatts.sec_level)},
-  {.type = CONF_TYPE_INT, .key = "max_frame_size", .offset = offsetof(struct mgos_config, rpc.gatts.max_frame_size)},
   {.type = CONF_TYPE_OBJECT, .key = "gcp", .offset = offsetof(struct mgos_config, rpc.gcp), .num_desc = 2},
   {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, rpc.gcp.enable)},
   {.type = CONF_TYPE_STRING, .key = "subfolder", .offset = offsetof(struct mgos_config, rpc.gcp.subfolder)},
@@ -211,16 +180,6 @@ const struct mgos_conf_entry mgos_config_schema_[352] = {
   {.type = CONF_TYPE_STRING, .key = "host_name", .offset = offsetof(struct mgos_config, dns_sd.host_name)},
   {.type = CONF_TYPE_STRING, .key = "txt", .offset = offsetof(struct mgos_config, dns_sd.txt)},
   {.type = CONF_TYPE_INT, .key = "ttl", .offset = offsetof(struct mgos_config, dns_sd.ttl)},
-  {.type = CONF_TYPE_OBJECT, .key = "eth", .offset = offsetof(struct mgos_config, eth), .num_desc = 9},
-  {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, eth.enable)},
-  {.type = CONF_TYPE_INT, .key = "phy_addr", .offset = offsetof(struct mgos_config, eth.phy_addr)},
-  {.type = CONF_TYPE_STRING, .key = "ip", .offset = offsetof(struct mgos_config, eth.ip)},
-  {.type = CONF_TYPE_STRING, .key = "netmask", .offset = offsetof(struct mgos_config, eth.netmask)},
-  {.type = CONF_TYPE_STRING, .key = "gw", .offset = offsetof(struct mgos_config, eth.gw)},
-  {.type = CONF_TYPE_INT, .key = "clk_mode", .offset = offsetof(struct mgos_config, eth.clk_mode)},
-  {.type = CONF_TYPE_INT, .key = "mdc_gpio", .offset = offsetof(struct mgos_config, eth.mdc_gpio)},
-  {.type = CONF_TYPE_INT, .key = "mdio_gpio", .offset = offsetof(struct mgos_config, eth.mdio_gpio)},
-  {.type = CONF_TYPE_INT, .key = "phy_pwr_gpio", .offset = offsetof(struct mgos_config, eth.phy_pwr_gpio)},
   {.type = CONF_TYPE_OBJECT, .key = "gcp", .offset = offsetof(struct mgos_config, gcp), .num_desc = 10},
   {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, gcp.enable)},
   {.type = CONF_TYPE_STRING, .key = "server", .offset = offsetof(struct mgos_config, gcp.server)},
@@ -232,23 +191,6 @@ const struct mgos_conf_entry mgos_config_schema_[352] = {
   {.type = CONF_TYPE_INT, .key = "token_ttl", .offset = offsetof(struct mgos_config, gcp.token_ttl)},
   {.type = CONF_TYPE_BOOL, .key = "enable_config", .offset = offsetof(struct mgos_config, gcp.enable_config)},
   {.type = CONF_TYPE_BOOL, .key = "enable_commands", .offset = offsetof(struct mgos_config, gcp.enable_commands)},
-  {.type = CONF_TYPE_OBJECT, .key = "pppos", .offset = offsetof(struct mgos_config, pppos), .num_desc = 16},
-  {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, pppos.enable)},
-  {.type = CONF_TYPE_INT, .key = "uart_no", .offset = offsetof(struct mgos_config, pppos.uart_no)},
-  {.type = CONF_TYPE_INT, .key = "baud_rate", .offset = offsetof(struct mgos_config, pppos.baud_rate)},
-  {.type = CONF_TYPE_INT, .key = "start_baud_rate", .offset = offsetof(struct mgos_config, pppos.start_baud_rate)},
-  {.type = CONF_TYPE_BOOL, .key = "fc_enable", .offset = offsetof(struct mgos_config, pppos.fc_enable)},
-  {.type = CONF_TYPE_INT, .key = "rx_gpio", .offset = offsetof(struct mgos_config, pppos.rx_gpio)},
-  {.type = CONF_TYPE_INT, .key = "tx_gpio", .offset = offsetof(struct mgos_config, pppos.tx_gpio)},
-  {.type = CONF_TYPE_INT, .key = "cts_gpio", .offset = offsetof(struct mgos_config, pppos.cts_gpio)},
-  {.type = CONF_TYPE_INT, .key = "rts_gpio", .offset = offsetof(struct mgos_config, pppos.rts_gpio)},
-  {.type = CONF_TYPE_STRING, .key = "apn", .offset = offsetof(struct mgos_config, pppos.apn)},
-  {.type = CONF_TYPE_STRING, .key = "user", .offset = offsetof(struct mgos_config, pppos.user)},
-  {.type = CONF_TYPE_STRING, .key = "pass", .offset = offsetof(struct mgos_config, pppos.pass)},
-  {.type = CONF_TYPE_BOOL, .key = "connect_on_startup", .offset = offsetof(struct mgos_config, pppos.connect_on_startup)},
-  {.type = CONF_TYPE_INT, .key = "echo_interval", .offset = offsetof(struct mgos_config, pppos.echo_interval)},
-  {.type = CONF_TYPE_INT, .key = "echo_fails", .offset = offsetof(struct mgos_config, pppos.echo_fails)},
-  {.type = CONF_TYPE_BOOL, .key = "hexdump_enable", .offset = offsetof(struct mgos_config, pppos.hexdump_enable)},
   {.type = CONF_TYPE_OBJECT, .key = "provision", .offset = offsetof(struct mgos_config, provision), .num_desc = 10},
   {.type = CONF_TYPE_OBJECT, .key = "btn", .offset = offsetof(struct mgos_config, provision.btn), .num_desc = 3},
   {.type = CONF_TYPE_INT, .key = "pin", .offset = offsetof(struct mgos_config, provision.btn.pin)},
@@ -321,10 +263,9 @@ const struct mgos_conf_entry mgos_config_schema_[352] = {
   {.type = CONF_TYPE_STRING, .key = "dhcp_hostname", .offset = offsetof(struct mgos_config, wifi.sta2.dhcp_hostname)},
   {.type = CONF_TYPE_INT, .key = "sta_cfg_idx", .offset = offsetof(struct mgos_config, wifi.sta_cfg_idx)},
   {.type = CONF_TYPE_INT, .key = "sta_connect_timeout", .offset = offsetof(struct mgos_config, wifi.sta_connect_timeout)},
-  {.type = CONF_TYPE_OBJECT, .key = "spi", .offset = offsetof(struct mgos_config, spi), .num_desc = 9},
+  {.type = CONF_TYPE_OBJECT, .key = "spi", .offset = offsetof(struct mgos_config, spi), .num_desc = 8},
   {.type = CONF_TYPE_BOOL, .key = "enable", .offset = offsetof(struct mgos_config, spi.enable)},
   {.type = CONF_TYPE_BOOL, .key = "debug", .offset = offsetof(struct mgos_config, spi.debug)},
-  {.type = CONF_TYPE_INT, .key = "unit_no", .offset = offsetof(struct mgos_config, spi.unit_no)},
   {.type = CONF_TYPE_INT, .key = "miso_gpio", .offset = offsetof(struct mgos_config, spi.miso_gpio)},
   {.type = CONF_TYPE_INT, .key = "mosi_gpio", .offset = offsetof(struct mgos_config, spi.mosi_gpio)},
   {.type = CONF_TYPE_INT, .key = "sclk_gpio", .offset = offsetof(struct mgos_config, spi.sclk_gpio)},
@@ -379,8 +320,8 @@ const char *mgos_config_get_debug_udp_log_addr(struct mgos_config *cfg) {
 int         mgos_config_get_debug_level(struct mgos_config *cfg) {
   return cfg->debug.level;
 }
-const char *mgos_config_get_debug_filter(struct mgos_config *cfg) {
-  return cfg->debug.filter;
+const char *mgos_config_get_debug_file_level(struct mgos_config *cfg) {
+  return cfg->debug.file_level;
 }
 int         mgos_config_get_debug_stdout_uart(struct mgos_config *cfg) {
   return cfg->debug.stdout_uart;
@@ -442,12 +383,6 @@ int         mgos_config_get_sys_wdt_timeout(struct mgos_config *cfg) {
 const char *mgos_config_get_sys_pref_ota_lib(struct mgos_config *cfg) {
   return cfg->sys.pref_ota_lib;
 }
-int         mgos_config_get_sys_esp32_adc_vref(struct mgos_config *cfg) {
-  return cfg->sys.esp32_adc_vref;
-}
-int         mgos_config_get_sys_esp32_adc_width(struct mgos_config *cfg) {
-  return cfg->sys.esp32_adc_width;
-}
 const struct mgos_config_sys_atca *mgos_config_get_sys_atca(struct mgos_config *cfg) {
   return &cfg->sys.atca;
 }
@@ -469,9 +404,6 @@ const char *mgos_config_get_conf_acl(struct mgos_config *cfg) {
 const struct mgos_config_i2c *mgos_config_get_i2c(struct mgos_config *cfg) {
   return &cfg->i2c;
 }
-int         mgos_config_get_i2c_unit_no(struct mgos_config *cfg) {
-  return cfg->i2c.unit_no;
-}
 int         mgos_config_get_i2c_enable(struct mgos_config *cfg) {
   return cfg->i2c.enable;
 }
@@ -486,27 +418,6 @@ int         mgos_config_get_i2c_sda_gpio(struct mgos_config *cfg) {
 }
 int         mgos_config_get_i2c_scl_gpio(struct mgos_config *cfg) {
   return cfg->i2c.scl_gpio;
-}
-const struct mgos_config_i2c *mgos_config_get_i2c1(struct mgos_config *cfg) {
-  return &cfg->i2c1;
-}
-int         mgos_config_get_i2c1_unit_no(struct mgos_config *cfg) {
-  return cfg->i2c1.unit_no;
-}
-int         mgos_config_get_i2c1_enable(struct mgos_config *cfg) {
-  return cfg->i2c1.enable;
-}
-int         mgos_config_get_i2c1_freq(struct mgos_config *cfg) {
-  return cfg->i2c1.freq;
-}
-int         mgos_config_get_i2c1_debug(struct mgos_config *cfg) {
-  return cfg->i2c1.debug;
-}
-int         mgos_config_get_i2c1_sda_gpio(struct mgos_config *cfg) {
-  return cfg->i2c1.sda_gpio;
-}
-int         mgos_config_get_i2c1_scl_gpio(struct mgos_config *cfg) {
-  return cfg->i2c1.scl_gpio;
 }
 const struct mgos_config_mqtt *mgos_config_get_mqtt(struct mgos_config *cfg) {
   return &cfg->mqtt;
@@ -721,57 +632,6 @@ int         mgos_config_get_azure_enable_cm(struct mgos_config *cfg) {
 int         mgos_config_get_azure_enable_dm(struct mgos_config *cfg) {
   return cfg->azure.enable_dm;
 }
-const struct mgos_config_bt *mgos_config_get_bt(struct mgos_config *cfg) {
-  return &cfg->bt;
-}
-int         mgos_config_get_bt_enable(struct mgos_config *cfg) {
-  return cfg->bt.enable;
-}
-const char *mgos_config_get_bt_dev_name(struct mgos_config *cfg) {
-  return cfg->bt.dev_name;
-}
-int         mgos_config_get_bt_adv_enable(struct mgos_config *cfg) {
-  return cfg->bt.adv_enable;
-}
-const char *mgos_config_get_bt_scan_rsp_data_hex(struct mgos_config *cfg) {
-  return cfg->bt.scan_rsp_data_hex;
-}
-int         mgos_config_get_bt_keep_enabled(struct mgos_config *cfg) {
-  return cfg->bt.keep_enabled;
-}
-int         mgos_config_get_bt_allow_pairing(struct mgos_config *cfg) {
-  return cfg->bt.allow_pairing;
-}
-int         mgos_config_get_bt_max_paired_devices(struct mgos_config *cfg) {
-  return cfg->bt.max_paired_devices;
-}
-int         mgos_config_get_bt_random_address(struct mgos_config *cfg) {
-  return cfg->bt.random_address;
-}
-int         mgos_config_get_bt_gatt_mtu(struct mgos_config *cfg) {
-  return cfg->bt.gatt_mtu;
-}
-const struct mgos_config_bt_gatts *mgos_config_get_bt_gatts(struct mgos_config *cfg) {
-  return &cfg->bt.gatts;
-}
-int         mgos_config_get_bt_gatts_min_sec_level(struct mgos_config *cfg) {
-  return cfg->bt.gatts.min_sec_level;
-}
-int         mgos_config_get_bt_gatts_require_pairing(struct mgos_config *cfg) {
-  return cfg->bt.gatts.require_pairing;
-}
-int         mgos_config_get_bt_config_svc_enable(struct mgos_config *cfg) {
-  return cfg->bt.config_svc_enable;
-}
-int         mgos_config_get_bt_config_svc_sec_level(struct mgos_config *cfg) {
-  return cfg->bt.config_svc_sec_level;
-}
-int         mgos_config_get_bt_debug_svc_enable(struct mgos_config *cfg) {
-  return cfg->bt.debug_svc_enable;
-}
-int         mgos_config_get_bt_debug_svc_sec_level(struct mgos_config *cfg) {
-  return cfg->bt.debug_svc_sec_level;
-}
 const struct mgos_config_update *mgos_config_get_update(struct mgos_config *cfg) {
   return &cfg->update;
 }
@@ -855,18 +715,6 @@ const struct mgos_config_rpc_azure *mgos_config_get_rpc_azure(struct mgos_config
 }
 int         mgos_config_get_rpc_azure_enable_dm(struct mgos_config *cfg) {
   return cfg->rpc.azure.enable_dm;
-}
-const struct mgos_config_rpc_gatts *mgos_config_get_rpc_gatts(struct mgos_config *cfg) {
-  return &cfg->rpc.gatts;
-}
-int         mgos_config_get_rpc_gatts_enable(struct mgos_config *cfg) {
-  return cfg->rpc.gatts.enable;
-}
-int         mgos_config_get_rpc_gatts_sec_level(struct mgos_config *cfg) {
-  return cfg->rpc.gatts.sec_level;
-}
-int         mgos_config_get_rpc_gatts_max_frame_size(struct mgos_config *cfg) {
-  return cfg->rpc.gatts.max_frame_size;
 }
 const struct mgos_config_rpc_gcp *mgos_config_get_rpc_gcp(struct mgos_config *cfg) {
   return &cfg->rpc.gcp;
@@ -976,36 +824,6 @@ const char *mgos_config_get_dns_sd_txt(struct mgos_config *cfg) {
 int         mgos_config_get_dns_sd_ttl(struct mgos_config *cfg) {
   return cfg->dns_sd.ttl;
 }
-const struct mgos_config_eth *mgos_config_get_eth(struct mgos_config *cfg) {
-  return &cfg->eth;
-}
-int         mgos_config_get_eth_enable(struct mgos_config *cfg) {
-  return cfg->eth.enable;
-}
-int         mgos_config_get_eth_phy_addr(struct mgos_config *cfg) {
-  return cfg->eth.phy_addr;
-}
-const char *mgos_config_get_eth_ip(struct mgos_config *cfg) {
-  return cfg->eth.ip;
-}
-const char *mgos_config_get_eth_netmask(struct mgos_config *cfg) {
-  return cfg->eth.netmask;
-}
-const char *mgos_config_get_eth_gw(struct mgos_config *cfg) {
-  return cfg->eth.gw;
-}
-int         mgos_config_get_eth_clk_mode(struct mgos_config *cfg) {
-  return cfg->eth.clk_mode;
-}
-int         mgos_config_get_eth_mdc_gpio(struct mgos_config *cfg) {
-  return cfg->eth.mdc_gpio;
-}
-int         mgos_config_get_eth_mdio_gpio(struct mgos_config *cfg) {
-  return cfg->eth.mdio_gpio;
-}
-int         mgos_config_get_eth_phy_pwr_gpio(struct mgos_config *cfg) {
-  return cfg->eth.phy_pwr_gpio;
-}
 const struct mgos_config_gcp *mgos_config_get_gcp(struct mgos_config *cfg) {
   return &cfg->gcp;
 }
@@ -1038,57 +856,6 @@ int         mgos_config_get_gcp_enable_config(struct mgos_config *cfg) {
 }
 int         mgos_config_get_gcp_enable_commands(struct mgos_config *cfg) {
   return cfg->gcp.enable_commands;
-}
-const struct mgos_config_pppos *mgos_config_get_pppos(struct mgos_config *cfg) {
-  return &cfg->pppos;
-}
-int         mgos_config_get_pppos_enable(struct mgos_config *cfg) {
-  return cfg->pppos.enable;
-}
-int         mgos_config_get_pppos_uart_no(struct mgos_config *cfg) {
-  return cfg->pppos.uart_no;
-}
-int         mgos_config_get_pppos_baud_rate(struct mgos_config *cfg) {
-  return cfg->pppos.baud_rate;
-}
-int         mgos_config_get_pppos_start_baud_rate(struct mgos_config *cfg) {
-  return cfg->pppos.start_baud_rate;
-}
-int         mgos_config_get_pppos_fc_enable(struct mgos_config *cfg) {
-  return cfg->pppos.fc_enable;
-}
-int         mgos_config_get_pppos_rx_gpio(struct mgos_config *cfg) {
-  return cfg->pppos.rx_gpio;
-}
-int         mgos_config_get_pppos_tx_gpio(struct mgos_config *cfg) {
-  return cfg->pppos.tx_gpio;
-}
-int         mgos_config_get_pppos_cts_gpio(struct mgos_config *cfg) {
-  return cfg->pppos.cts_gpio;
-}
-int         mgos_config_get_pppos_rts_gpio(struct mgos_config *cfg) {
-  return cfg->pppos.rts_gpio;
-}
-const char *mgos_config_get_pppos_apn(struct mgos_config *cfg) {
-  return cfg->pppos.apn;
-}
-const char *mgos_config_get_pppos_user(struct mgos_config *cfg) {
-  return cfg->pppos.user;
-}
-const char *mgos_config_get_pppos_pass(struct mgos_config *cfg) {
-  return cfg->pppos.pass;
-}
-int         mgos_config_get_pppos_connect_on_startup(struct mgos_config *cfg) {
-  return cfg->pppos.connect_on_startup;
-}
-int         mgos_config_get_pppos_echo_interval(struct mgos_config *cfg) {
-  return cfg->pppos.echo_interval;
-}
-int         mgos_config_get_pppos_echo_fails(struct mgos_config *cfg) {
-  return cfg->pppos.echo_fails;
-}
-int         mgos_config_get_pppos_hexdump_enable(struct mgos_config *cfg) {
-  return cfg->pppos.hexdump_enable;
 }
 const struct mgos_config_provision *mgos_config_get_provision(struct mgos_config *cfg) {
   return &cfg->provision;
@@ -1315,9 +1082,6 @@ int         mgos_config_get_spi_enable(struct mgos_config *cfg) {
 int         mgos_config_get_spi_debug(struct mgos_config *cfg) {
   return cfg->spi.debug;
 }
-int         mgos_config_get_spi_unit_no(struct mgos_config *cfg) {
-  return cfg->spi.unit_no;
-}
 int         mgos_config_get_spi_miso_gpio(struct mgos_config *cfg) {
   return cfg->spi.miso_gpio;
 }
@@ -1432,8 +1196,8 @@ void mgos_config_set_debug_udp_log_addr(struct mgos_config *cfg, const char *val
 void mgos_config_set_debug_level(struct mgos_config *cfg, int         val) {
   cfg->debug.level = val;
 }
-void mgos_config_set_debug_filter(struct mgos_config *cfg, const char *val) {
-  mgos_conf_set_str(&cfg->debug.filter, val);
+void mgos_config_set_debug_file_level(struct mgos_config *cfg, const char *val) {
+  mgos_conf_set_str(&cfg->debug.file_level, val);
 }
 void mgos_config_set_debug_stdout_uart(struct mgos_config *cfg, int         val) {
   cfg->debug.stdout_uart = val;
@@ -1486,12 +1250,6 @@ void mgos_config_set_sys_wdt_timeout(struct mgos_config *cfg, int         val) {
 void mgos_config_set_sys_pref_ota_lib(struct mgos_config *cfg, const char *val) {
   mgos_conf_set_str(&cfg->sys.pref_ota_lib, val);
 }
-void mgos_config_set_sys_esp32_adc_vref(struct mgos_config *cfg, int         val) {
-  cfg->sys.esp32_adc_vref = val;
-}
-void mgos_config_set_sys_esp32_adc_width(struct mgos_config *cfg, int         val) {
-  cfg->sys.esp32_adc_width = val;
-}
 void mgos_config_set_sys_atca_enable(struct mgos_config *cfg, int         val) {
   cfg->sys.atca.enable = val;
 }
@@ -1507,9 +1265,6 @@ void mgos_config_set_sys_atca_ecdh_slots_mask(struct mgos_config *cfg, int      
 void mgos_config_set_conf_acl(struct mgos_config *cfg, const char *val) {
   mgos_conf_set_str(&cfg->conf_acl, val);
 }
-void mgos_config_set_i2c_unit_no(struct mgos_config *cfg, int         val) {
-  cfg->i2c.unit_no = val;
-}
 void mgos_config_set_i2c_enable(struct mgos_config *cfg, int         val) {
   cfg->i2c.enable = val;
 }
@@ -1524,24 +1279,6 @@ void mgos_config_set_i2c_sda_gpio(struct mgos_config *cfg, int         val) {
 }
 void mgos_config_set_i2c_scl_gpio(struct mgos_config *cfg, int         val) {
   cfg->i2c.scl_gpio = val;
-}
-void mgos_config_set_i2c1_unit_no(struct mgos_config *cfg, int         val) {
-  cfg->i2c1.unit_no = val;
-}
-void mgos_config_set_i2c1_enable(struct mgos_config *cfg, int         val) {
-  cfg->i2c1.enable = val;
-}
-void mgos_config_set_i2c1_freq(struct mgos_config *cfg, int         val) {
-  cfg->i2c1.freq = val;
-}
-void mgos_config_set_i2c1_debug(struct mgos_config *cfg, int         val) {
-  cfg->i2c1.debug = val;
-}
-void mgos_config_set_i2c1_sda_gpio(struct mgos_config *cfg, int         val) {
-  cfg->i2c1.sda_gpio = val;
-}
-void mgos_config_set_i2c1_scl_gpio(struct mgos_config *cfg, int         val) {
-  cfg->i2c1.scl_gpio = val;
 }
 void mgos_config_set_mqtt_enable(struct mgos_config *cfg, int         val) {
   cfg->mqtt.enable = val;
@@ -1735,51 +1472,6 @@ void mgos_config_set_azure_enable_cm(struct mgos_config *cfg, int         val) {
 void mgos_config_set_azure_enable_dm(struct mgos_config *cfg, int         val) {
   cfg->azure.enable_dm = val;
 }
-void mgos_config_set_bt_enable(struct mgos_config *cfg, int         val) {
-  cfg->bt.enable = val;
-}
-void mgos_config_set_bt_dev_name(struct mgos_config *cfg, const char *val) {
-  mgos_conf_set_str(&cfg->bt.dev_name, val);
-}
-void mgos_config_set_bt_adv_enable(struct mgos_config *cfg, int         val) {
-  cfg->bt.adv_enable = val;
-}
-void mgos_config_set_bt_scan_rsp_data_hex(struct mgos_config *cfg, const char *val) {
-  mgos_conf_set_str(&cfg->bt.scan_rsp_data_hex, val);
-}
-void mgos_config_set_bt_keep_enabled(struct mgos_config *cfg, int         val) {
-  cfg->bt.keep_enabled = val;
-}
-void mgos_config_set_bt_allow_pairing(struct mgos_config *cfg, int         val) {
-  cfg->bt.allow_pairing = val;
-}
-void mgos_config_set_bt_max_paired_devices(struct mgos_config *cfg, int         val) {
-  cfg->bt.max_paired_devices = val;
-}
-void mgos_config_set_bt_random_address(struct mgos_config *cfg, int         val) {
-  cfg->bt.random_address = val;
-}
-void mgos_config_set_bt_gatt_mtu(struct mgos_config *cfg, int         val) {
-  cfg->bt.gatt_mtu = val;
-}
-void mgos_config_set_bt_gatts_min_sec_level(struct mgos_config *cfg, int         val) {
-  cfg->bt.gatts.min_sec_level = val;
-}
-void mgos_config_set_bt_gatts_require_pairing(struct mgos_config *cfg, int         val) {
-  cfg->bt.gatts.require_pairing = val;
-}
-void mgos_config_set_bt_config_svc_enable(struct mgos_config *cfg, int         val) {
-  cfg->bt.config_svc_enable = val;
-}
-void mgos_config_set_bt_config_svc_sec_level(struct mgos_config *cfg, int         val) {
-  cfg->bt.config_svc_sec_level = val;
-}
-void mgos_config_set_bt_debug_svc_enable(struct mgos_config *cfg, int         val) {
-  cfg->bt.debug_svc_enable = val;
-}
-void mgos_config_set_bt_debug_svc_sec_level(struct mgos_config *cfg, int         val) {
-  cfg->bt.debug_svc_sec_level = val;
-}
 void mgos_config_set_update_timeout(struct mgos_config *cfg, int         val) {
   cfg->update.timeout = val;
 }
@@ -1851,15 +1543,6 @@ void mgos_config_set_rpc_ws_ssl_client_cert_file(struct mgos_config *cfg, const 
 }
 void mgos_config_set_rpc_azure_enable_dm(struct mgos_config *cfg, int         val) {
   cfg->rpc.azure.enable_dm = val;
-}
-void mgos_config_set_rpc_gatts_enable(struct mgos_config *cfg, int         val) {
-  cfg->rpc.gatts.enable = val;
-}
-void mgos_config_set_rpc_gatts_sec_level(struct mgos_config *cfg, int         val) {
-  cfg->rpc.gatts.sec_level = val;
-}
-void mgos_config_set_rpc_gatts_max_frame_size(struct mgos_config *cfg, int         val) {
-  cfg->rpc.gatts.max_frame_size = val;
 }
 void mgos_config_set_rpc_gcp_enable(struct mgos_config *cfg, int         val) {
   cfg->rpc.gcp.enable = val;
@@ -1951,33 +1634,6 @@ void mgos_config_set_dns_sd_txt(struct mgos_config *cfg, const char *val) {
 void mgos_config_set_dns_sd_ttl(struct mgos_config *cfg, int         val) {
   cfg->dns_sd.ttl = val;
 }
-void mgos_config_set_eth_enable(struct mgos_config *cfg, int         val) {
-  cfg->eth.enable = val;
-}
-void mgos_config_set_eth_phy_addr(struct mgos_config *cfg, int         val) {
-  cfg->eth.phy_addr = val;
-}
-void mgos_config_set_eth_ip(struct mgos_config *cfg, const char *val) {
-  mgos_conf_set_str(&cfg->eth.ip, val);
-}
-void mgos_config_set_eth_netmask(struct mgos_config *cfg, const char *val) {
-  mgos_conf_set_str(&cfg->eth.netmask, val);
-}
-void mgos_config_set_eth_gw(struct mgos_config *cfg, const char *val) {
-  mgos_conf_set_str(&cfg->eth.gw, val);
-}
-void mgos_config_set_eth_clk_mode(struct mgos_config *cfg, int         val) {
-  cfg->eth.clk_mode = val;
-}
-void mgos_config_set_eth_mdc_gpio(struct mgos_config *cfg, int         val) {
-  cfg->eth.mdc_gpio = val;
-}
-void mgos_config_set_eth_mdio_gpio(struct mgos_config *cfg, int         val) {
-  cfg->eth.mdio_gpio = val;
-}
-void mgos_config_set_eth_phy_pwr_gpio(struct mgos_config *cfg, int         val) {
-  cfg->eth.phy_pwr_gpio = val;
-}
 void mgos_config_set_gcp_enable(struct mgos_config *cfg, int         val) {
   cfg->gcp.enable = val;
 }
@@ -2007,54 +1663,6 @@ void mgos_config_set_gcp_enable_config(struct mgos_config *cfg, int         val)
 }
 void mgos_config_set_gcp_enable_commands(struct mgos_config *cfg, int         val) {
   cfg->gcp.enable_commands = val;
-}
-void mgos_config_set_pppos_enable(struct mgos_config *cfg, int         val) {
-  cfg->pppos.enable = val;
-}
-void mgos_config_set_pppos_uart_no(struct mgos_config *cfg, int         val) {
-  cfg->pppos.uart_no = val;
-}
-void mgos_config_set_pppos_baud_rate(struct mgos_config *cfg, int         val) {
-  cfg->pppos.baud_rate = val;
-}
-void mgos_config_set_pppos_start_baud_rate(struct mgos_config *cfg, int         val) {
-  cfg->pppos.start_baud_rate = val;
-}
-void mgos_config_set_pppos_fc_enable(struct mgos_config *cfg, int         val) {
-  cfg->pppos.fc_enable = val;
-}
-void mgos_config_set_pppos_rx_gpio(struct mgos_config *cfg, int         val) {
-  cfg->pppos.rx_gpio = val;
-}
-void mgos_config_set_pppos_tx_gpio(struct mgos_config *cfg, int         val) {
-  cfg->pppos.tx_gpio = val;
-}
-void mgos_config_set_pppos_cts_gpio(struct mgos_config *cfg, int         val) {
-  cfg->pppos.cts_gpio = val;
-}
-void mgos_config_set_pppos_rts_gpio(struct mgos_config *cfg, int         val) {
-  cfg->pppos.rts_gpio = val;
-}
-void mgos_config_set_pppos_apn(struct mgos_config *cfg, const char *val) {
-  mgos_conf_set_str(&cfg->pppos.apn, val);
-}
-void mgos_config_set_pppos_user(struct mgos_config *cfg, const char *val) {
-  mgos_conf_set_str(&cfg->pppos.user, val);
-}
-void mgos_config_set_pppos_pass(struct mgos_config *cfg, const char *val) {
-  mgos_conf_set_str(&cfg->pppos.pass, val);
-}
-void mgos_config_set_pppos_connect_on_startup(struct mgos_config *cfg, int         val) {
-  cfg->pppos.connect_on_startup = val;
-}
-void mgos_config_set_pppos_echo_interval(struct mgos_config *cfg, int         val) {
-  cfg->pppos.echo_interval = val;
-}
-void mgos_config_set_pppos_echo_fails(struct mgos_config *cfg, int         val) {
-  cfg->pppos.echo_fails = val;
-}
-void mgos_config_set_pppos_hexdump_enable(struct mgos_config *cfg, int         val) {
-  cfg->pppos.hexdump_enable = val;
 }
 void mgos_config_set_provision_btn_pin(struct mgos_config *cfg, int         val) {
   cfg->provision.btn.pin = val;
@@ -2253,9 +1861,6 @@ void mgos_config_set_spi_enable(struct mgos_config *cfg, int         val) {
 }
 void mgos_config_set_spi_debug(struct mgos_config *cfg, int         val) {
   cfg->spi.debug = val;
-}
-void mgos_config_set_spi_unit_no(struct mgos_config *cfg, int         val) {
-  cfg->spi.unit_no = val;
 }
 void mgos_config_set_spi_miso_gpio(struct mgos_config *cfg, int         val) {
   cfg->spi.miso_gpio = val;
